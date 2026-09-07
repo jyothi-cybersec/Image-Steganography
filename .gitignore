@@ -1,0 +1,20 @@
+.idea/
+.DS_Store
+__pycache__/
+*.pyc
+venv/
+invisicipher_env/
+
+# Local backup
+/github-backup/
+/InvisiCipher-master/
+
+# Large local datasets and model weights
+/app/models/DEEP_STEGO/checkpoints/
+/app/models/DEEP_STEGO/models/
+/app/models/DEEP_STEGO/test/
+/app/models/ESRGAN/models/
+*.save
+*.pyo
+app/ui/assets/components_backgrounds/main_window_welcome_bg.png
+app/models/ESRGAN/results/
