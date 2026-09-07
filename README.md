@@ -1,100 +1,252 @@
-<h1 align="center">
-  InvisiCipher : Deep Learning-Based image Steganography with Chaotic Encryption and
-Enhanced Super Resolution
-</h1>
+<h1 align="center">InvisiCipher</h1>
 
 <p align="center">
-  <img src="app/ui/logo.png" alt="Project Logo" width="100">
+  <strong>Deep Learning-Based Image Steganography with Encryption and Image Enhancement</strong>
 </p>
 
 <p align="center">
-  <strong>Hide secrets, enhance images!</strong>
+  A Python-based application for hiding secret images inside cover images, supporting image data protection through encryption, and enhancing extracted images using deep learning.
 </p>
 
-## Overview
+---
 
-Welcome to our Steganography and Super Resolution project! This project combines the power of steganography techniques and super-resolution using deep learning models. Our goal is to hide a secret image within a cover image using advanced convolutional neural networks (CNNs) and then enhance the quality of the hidden image using an Enhanced Super Resolution Generative Adversarial Network (ESRGAN). We also provide an option to encrypt the steg image using various chaos encryption algorithms for added security.
+## 🔐 Overview
 
-## Features
+**InvisiCipher** is an image steganography project that combines deep learning, cryptography, and image enhancement techniques.
 
-✨ **Interactive Hiding**: Utilize our intuitive hide network powered by CNNs to embed secret images within cover images effortlessly.
+The application provides a graphical interface for working with hidden images and includes functionality for image hiding, image revealing, encryption/decryption, and super-resolution enhancement.
 
-🔒 **Secure Encryption**: Choose from multiple chaos encryption algorithms such as AES, Blowfish to encrypt your steg image and protect your secrets.
+The project is designed as an educational implementation for exploring how different security and deep-learning techniques can be combined for image data protection.
 
-🌟 **Enhanced Super Resolution**: Witness the magic of our ESRGAN model as it enhances the resolution and quality of the hidden image, revealing every detail.
+---
 
-🎨 **Easy-to-Use**: Our project provides a user-friendly interface and simple scripts to perform hiding, encryption, decryption, and image enhancement with just a few lines of code.
+## ✨ Features
 
-## Project Architecture
+### 🖼️ Deep Image Steganography
 
-The project architecture consists of the following components:
+- Hide a secret image inside a cover image.
+- Reveal the hidden image from a stego image.
+- Uses CNN-based deep steganography models.
 
-1. **Prepare Network**: A CNN-based network that prepares the secret image for hiding by extracting essential features and encoding it.
+### 🔒 Image Encryption
 
-2. **Hide Network**: Another CNN-based network that embeds the prepared secret image within the cover image, producing the steg image.
+Supports:
 
-3. **Chaos Encryption**: Choose between AES encryption, Blowfish encryption to secure your steg image.
+- AES encryption and decryption
+- Blowfish encryption and decryption
 
-4. **Chaos Decryption**: Decrypt the encrypted steg image using the corresponding decryption algorithm to retrieve the steg image.
+The encryption modules provide an additional layer of protection for image data.
 
-5. **Reveal Network**: A CNN-based network that extracts the secret image from the steg image by decoding the hidden information.
+### 🧠 Image Super-Resolution
 
-6. **ESRGAN**: Our Enhanced Super Resolution Generative Adversarial Network (ESRGAN) model enhances the quality and resolution of the extracted secret image.
+Uses **ESRGAN** components to enhance the resolution and quality of images.
 
-## Getting Started
+### 🖥️ Graphical User Interface
 
-To get started with our project, follow these steps:
+The application includes a **PyQt5-based desktop interface** for interacting with the available image-processing and security features.
 
-1. **Clone the Repository**: `git clone https://github.com/Asirwad/InvisiCipher.git`
+### 🎨 Image Generation
 
-2. **Install Dependencies**: Install the required dependencies by running `pip install -r requirements.txt`.
+The project also contains a Stable Diffusion API integration module for image generation.
 
-3. **Prepare Your Dataset**: Organize your cover and secret images dataset and place them in the appropriate directories.
+---
 
-4. **Customize Configuration**: Modify the configuration files to set the desired parameters for the models and encryption algorithms.
+## 🏗️ Project Architecture
 
-5. **Train the Models**: Run the training script to train the CNN models and ESRGAN: `python train.py`.
+```text
+InvisiCipher
+│
+├── app/
+│   ├── models/
+│   │   ├── DEEP_STEGO/
+│   │   │   ├── hide_image.py
+│   │   │   ├── reveal_image.py
+│   │   │   ├── train.py
+│   │   │   └── Utils/
+│   │   │
+│   │   ├── ESRGAN/
+│   │   │   ├── RRDBNet_arch.py
+│   │   │   ├── model.py
+│   │   │   └── upscale_image.py
+│   │   │
+│   │   ├── StableDiffusionAPI/
+│   │   ├── StackGAN/
+│   │   └── encryption/
+│   │       ├── aes.py
+│   │       └── blowfish.py
+│   │
+│   ├── ui/
+│   │   ├── main.py
+│   │   ├── components/
+│   │   ├── assets/
+│   │   └── styles/
+│   │
+│   ├── main_CLI_v1.py
+│   └── __init__.py
+│
+├── requirements.txt
+└── README.md
+```
 
-6. **Explore the Scripts**: Utilize the provided scripts to hide, encrypt, reveal, and enhance images based on your specific requirements.
+---
 
-## Welcome screen
+## 🛠️ Technology Stack
 
-<p align="center">
-  <img src="app/ui/assets/readme_assets/main_window.png" alt="Welcome" width="1000">
-</p>
+| Technology | Purpose |
+|------------|---------|
+| Python | Core development |
+| PyTorch | Deep learning |
+| TensorFlow | Deep learning components |
+| OpenCV | Image processing |
+| Pillow | Image manipulation |
+| NumPy | Numerical processing |
+| PyCryptodome | Cryptographic functionality |
+| PyQt5 | Desktop GUI |
+| ESRGAN | Image super-resolution |
+| Deep Steganography | Image hiding and revealing |
 
-## Image hide
+---
 
-<p align="center">
-  <img src="app/ui/assets/readme_assets/hide.png" alt="Image hide" width="1000">
-</p>
+## 🔄 Workflow
 
-## Image reveal
+```text
+Cover Image + Secret Image
+            │
+            ▼
+    Deep Steganography
+            │
+            ▼
+       Stego Image
+            │
+            ▼
+    AES / Blowfish
+       Encryption
+            │
+            ▼
+     Protected Image
+            │
+            ▼
+       Decryption
+            │
+            ▼
+      Reveal Network
+            │
+            ▼
+      Secret Image
+            │
+            ▼
+        ESRGAN
+            │
+            ▼
+   Enhanced Secret Image
+```
 
-<p align="center">
-  <img src="app/ui/assets/readme_assets/reveal.png" alt="Image reveal" width="1000">
-</p>
+---
 
-## Super resolution
+## 🚀 Getting Started
 
-<p align="center">
-  <img src="app/ui/assets/readme_assets/superres.png" alt="Super resolution" width="1000">
-</p>
+### 1. Clone the repository
 
-## Contributing
+```bash
+git clone https://github.com/jyothi-cybersec/Image-Steganography.git
+cd Image-Steganography
+```
 
-We welcome contributions from the open source community. If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+### 2. Create a virtual environment
 
-## Acknowledgements
+```bash
+python3 -m venv venv
+```
 
-We would like to acknowledge the following resources and libraries used in this project:
+Activate it:
 
-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/1915px-Tensorflow_logo.svg.png" alt="TensorFlow" width="26" align="center"> TensorFlow: [↗️](https://www.tensorflow.org/)
-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/PyTorch_logo_icon.svg/1200px-PyTorch_logo_icon.svg.png"
- alt="PyTorch" width="25" align="center"> PyTorch: [↗️](https://pytorch.org/)
-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Python_and_Qt.svg/800px-Python_and_Qt.svg.png"
- alt="PyQt" width="25" align="center"> PyQt: [↗️](https://www.qt.io/qt-for-python)
+```bash
+source venv/bin/activate
+```
 
-## Contact
+### 3. Install dependencies
 
-For any questions or inquiries, please contact us at [asirwadsali@gmail.com](mailto:asirwadsali@gmail.com).
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the application
+
+The main graphical interface is located at:
+
+```text
+app/ui/main.py
+```
+
+The project also contains a CLI implementation:
+
+```text
+app/main_CLI_v1.py
+```
+
+> **Note:** Some deep-learning functionality depends on model weights and supporting files that are not included in this repository. Hardware and Python/library compatibility may also affect execution.
+
+---
+
+## 📸 Application Screenshots
+
+### Main Interface
+
+![Main Interface](app/ui/assets/readme_assets/main_window.png)
+
+### Image Hiding
+
+![Image Hiding](app/ui/assets/readme_assets/hide.png)
+
+### Image Revealing
+
+![Image Revealing](app/ui/assets/readme_assets/reveal.png)
+
+### Super Resolution
+
+![Super Resolution](app/ui/assets/readme_assets/superres.png)
+
+---
+
+## 🔐 Security Relevance
+
+This project demonstrates several concepts relevant to cybersecurity:
+
+- Information hiding through image steganography
+- Cryptographic protection using AES and Blowfish
+- Confidentiality of image-based data
+- Deep-learning-based information hiding
+- Image processing and data transformation
+
+Understanding these techniques can be useful when studying secure data handling, covert communication techniques, and digital forensics.
+
+---
+
+## 📚 Learning Outcomes
+
+Through this project, I explored:
+
+- Image steganography
+- CNN-based image processing
+- AES and Blowfish encryption
+- Image decryption and recovery
+- Super-resolution techniques
+- Python GUI development
+- Integration of machine-learning components into an application
+
+---
+
+## ⚠️ Disclaimer
+
+This project is intended for **educational and research purposes**.
+
+It demonstrates image hiding, encryption, and image-processing techniques and should not be treated as a production-grade security system without further security review and testing.
+
+---
+
+## 👩‍💻 Author
+
+**Jyothi**
+
+GitHub:  
+https://github.com/jyothi-cybersec
